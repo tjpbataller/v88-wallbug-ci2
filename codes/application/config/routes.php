@@ -61,4 +61,4 @@ $route['register/validate'] = 'users/process_registration';
 
 $route['logoff'] = 'users/logoff';
 
-$route['wall'] = 'wall/wrong_index';
+$route['wall'] = 'wall/index';

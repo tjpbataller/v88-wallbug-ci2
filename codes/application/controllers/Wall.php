@@ -10,10 +10,10 @@ class Wall extends CI_Controller {
     public function index()  
     {
         $user_messages = $this->message->get_messages();
-        
         $inbox = array();
         foreach($user_messages as $user_message) 
         {
+            $this->load->model("comment");
             $comments = $this->comment->get_comments_from_message_id($user_message['message_id']);
             $user_message["comments"] = $comments;
             $inbox[] = $user_message;
@@ -44,6 +44,7 @@ class Wall extends CI_Controller {
     */
     public function add_comment() 
     {
+        $this->load->model("comment");
         $result = $this->comment->validate_comment();
 
         if($result != 'success') {

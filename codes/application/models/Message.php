@@ -7,7 +7,7 @@ class Message extends CI_Model {
         Owner: Karen
     */
     public function get_messages() {
-        $query = 'SELECT messages.id AS message_id, message AS message_content, 
+        $query = 'SELECT messages.id AS message_id, messages AS message_content, 
         messages.created_at AS message_date, CONCAT(first_name," ",last_name) AS message_sender_name 
         FROM messages LEFT JOIN users u1 on messages.user_id=u1.id 
         ORDER BY messages.created_at DESC';
@@ -34,7 +34,8 @@ class Message extends CI_Model {
         Owner: Karen
     */
     public function add_message() {
-        $query = 'INSERT INTO Messages(user_id, message) VALUES (?, ?)';
+        $query = 'INSERT INTO Messages(user_id, messages) VALUES (?, ?)';
+        $post['message_input'] = $this->input->post("message_input");
         $values = array(
             $this->security->xss_clean($this->session->userdata('user_id')), 
             $this->security->xss_clean($post['message_input'])); 

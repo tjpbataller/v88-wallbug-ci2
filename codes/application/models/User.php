@@ -48,8 +48,7 @@ class User extends CI_Model {
     */
     function validate_signin_match($user, $password) 
     {
-        $hash_password = $this->security->xss_clean($password);
-
+        $hash_password = md5($this->security->xss_clean($password));
         if($user && $user['password'] == $hash_password) {
             return "success";
         }

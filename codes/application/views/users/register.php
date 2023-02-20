@@ -3,7 +3,8 @@
 
         <h1>Register</h1>
 
-        <form action="register/validate" method="POST">
+        <form action="register/validate" method="POST" >
+            <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>">
             First name: <input type="text" name="first_name">
             Last name: <input type="text" name="last_name">
             Email address: <input type="text" name="email">

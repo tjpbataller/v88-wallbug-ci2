@@ -17,7 +17,6 @@ class Users extends CI_Controller {
         else {
             redirect("wall");
         }
-
     }
     
     /*  DOCU: This function is triggered to display sign in page if there's no user session yet
@@ -71,7 +70,7 @@ class Users extends CI_Controller {
         $result = $this->user->validate_signin_form();
         if($result != 'success') {
             $this->session->set_flashdata('input_errors', $result);
-            redirect("signin");
+            // redirect("signin");
         } 
         else 
         {
